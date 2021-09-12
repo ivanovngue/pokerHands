@@ -33,6 +33,11 @@ public class Ranking {
         return (card1 == card3 || card2 == card4 || card3 == card5);
     }
 
+    protected boolean isStraight(Card[] hand) {
+        return false;
+    }
+
+
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
         if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;

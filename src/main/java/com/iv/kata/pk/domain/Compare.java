@@ -77,6 +77,10 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithStraight(Player player1, Player player2) {
+        return null;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
