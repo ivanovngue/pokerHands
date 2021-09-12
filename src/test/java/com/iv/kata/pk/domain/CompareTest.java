@@ -30,27 +30,20 @@ class CompareTest {
     @Test
     void testThatPlayer_comparePlayerWithSamePairs_returns_rightPlayer() {
         Player blackPlayer = new Player("2C 2H 4S 8C AH", "Black");
-        Player whitePlayer = new Player("2H 2D 5S 9C KD", "White");
+        Player whitePlayer = new Player("2S 2D 5S 9C KD", "White");
         Assertions.assertEquals(blackPlayer, compare.comparePlayerWithPair(whitePlayer, blackPlayer));
     }
 
     @Test
-    void testThatPlayer_comparePlayerWithDifferentThreeOfAKind_returns_rightPlayer() {
+    void testThatPlayer_comparePlayerWithThreeOfAKind_returns_rightPlayer() {
         Player blackPlayer = new Player("2C 2H 2S 8C AH", "Black");
         Player whitePlayer = new Player("3H 3D 3S 9C KD", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithThreeOfAKind(whitePlayer, blackPlayer));
     }
 
     @Test
-    void testThatPlayer_comparePlayerWithSameThreeOfAKind_returns_rightPlayer() {
-        Player blackPlayer = new Player("2C 2H 2S 8C AH", "Black");
-        Player whitePlayer = new Player("2H 2D 2S 9C KD", "White");
-        Assertions.assertNull(compare.comparePlayerWithThreeOfAKind(whitePlayer, blackPlayer));
-    }
-
-    @Test
     void testThatPlayer_comparePlayerWithDifferentStraight_returns_rightPlayer() {
-        Player blackPlayer = new Player("2C 3H 4S 5C 6H", "Black");
+        Player blackPlayer = new Player("2C 3D 4S 5C 6H", "Black");
         Player whitePlayer = new Player("3H 4D 5S 6C 7D", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithStraight(whitePlayer, blackPlayer));
     }
@@ -58,7 +51,7 @@ class CompareTest {
     @Test
     void testThatPlayer_comparePlayerWithSameStraight_returns_rightPlayer() {
         Player blackPlayer = new Player("2C 3H 4S 5C 6H", "Black");
-        Player whitePlayer = new Player("2H 3D 4S 5C 6D", "White");
+        Player whitePlayer = new Player("2H 3D 4H 5S 6D", "White");
         Assertions.assertNull(compare.comparePlayerWithStraight(whitePlayer, blackPlayer));
     }
 
@@ -71,8 +64,8 @@ class CompareTest {
 
     @Test
     void testThatPlayer_comparePlayerWithSameSuiteFlush_returns_rightPlayer() {
-        Player blackPlayer = new Player("2H 4H 6H 7H 9H", "Black");
-        Player whitePlayer = new Player("3H 4H 8H 9H TH", "White");
+        Player blackPlayer = new Player("2H 3H 4H 5H 6H", "Black");
+        Player whitePlayer = new Player("7H 8H 9H TH JH", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFlush(whitePlayer, blackPlayer));
     }
 
