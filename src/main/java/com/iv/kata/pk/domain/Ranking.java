@@ -34,13 +34,14 @@ public class Ranking {
     }
 
     protected boolean isStraight(Card[] hand) {
-        return false;
+        return hand[4].getValue() - hand[0].getValue() == 4;
     }
 
 
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
-        if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;
+        if (isStraight(hand)) return HandRankEnum.STRAIGHT;
+        else if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;
         else if (isPair(hand)) return HandRankEnum.PAIR;
         else return HandRankEnum.HIGH_CARD;
     }
