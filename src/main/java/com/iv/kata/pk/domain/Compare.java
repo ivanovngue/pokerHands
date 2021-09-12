@@ -62,6 +62,21 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithThreeOfAKind(Player player1, Player player2) {
+        Player playerToReturn = null;
+        Card card1ThreeOfAKind = getCardsOnThreeOfAKind(player1);
+        Card card2ThreeOfAKind = getCardsOnThreeOfAKind(player2);
+        if (card1ThreeOfAKind != null && card2ThreeOfAKind != null) {
+            if (card1ThreeOfAKind.getRank() > card2ThreeOfAKind.getRank()) {
+                playerToReturn = player1;
+            }
+            if (card1ThreeOfAKind.getRank() < card2ThreeOfAKind.getRank()) {
+                playerToReturn = player2;
+            }
+        }
+        return playerToReturn;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
@@ -90,7 +105,7 @@ public class Compare {
         }
         return cardOnPair;
     }
-    
+
     private Card[] getHandWithoutPair(Player player, Card cardPair) {
         List<Card> listCardsWithoutPair = new ArrayList<>();
         Card[] hand = player.getHand();
@@ -112,5 +127,18 @@ public class Compare {
             }
         }
         return minValueHand;
+    }
+
+    private Card getCardsOnThreeOfAKind(Player player) {
+        Card[] hand = player.getHand();
+        if (hand[0].getRank() == hand[2].getRank()) {
+            return hand[0];
+        } else if (hand[1].getRank() == hand[3].getRank()) {
+            return hand[1];
+        } else if (hand[2].getRank() == hand[4].getRank()) {
+            return hand[2];
+        } else {
+            return null;
+        }
     }
 }
