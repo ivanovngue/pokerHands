@@ -63,6 +63,9 @@ public class Winner {
                     case 6:
                         addResult(result, compare.comparePlayerWithFullHouse(blackPlayer, whitePlayer), blackPlayerMessageDetail);
                         break;
+                    case 7:
+                        addResult(result, compare.comparePlayerWithFourOfAKind(blackPlayer, whitePlayer), blackPlayerMessageDetail);
+                        break;
                     default:
                         result.add(TIE);
                         break;
