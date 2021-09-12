@@ -144,6 +144,21 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithFourOfAKind(Player player1, Player player2) {
+        Player playerToReturn = null;
+        Card card1FourOfAKind = getCardsOnFourOfAKind(player1);
+        Card card2FourOfAKind = getCardsOnFourOfAKind(player2);
+        if (card1FourOfAKind != null && card2FourOfAKind != null) {
+            if (card1FourOfAKind.getRank() > card2FourOfAKind.getRank()) {
+                playerToReturn = player1;
+            }
+            if (card1FourOfAKind.getRank() < card2FourOfAKind.getRank()) {
+                playerToReturn = player2;
+            }
+        }
+        return playerToReturn;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
@@ -204,6 +219,17 @@ public class Compare {
             return hand[1];
         } else if (hand[2].getRank() == hand[4].getRank()) {
             return hand[2];
+        } else {
+            return null;
+        }
+    }
+
+    private Card getCardsOnFourOfAKind(Player player) {
+        Card[] hand = player.getHand();
+        if (hand[0].getRank() == hand[3].getRank()) {
+            return hand[0];
+        } else if (hand[1].getRank() == hand[4].getRank()) {
+            return hand[1];
         } else {
             return null;
         }

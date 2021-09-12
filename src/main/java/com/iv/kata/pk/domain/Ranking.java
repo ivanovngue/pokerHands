@@ -57,9 +57,14 @@ public class Ranking {
         return ((card1 == card2 && card2 != card3 && card3 == card5) || (card1 == card3 && card3 != card4 && card4 == card5));
     }
 
+    protected boolean isFourOfAKind(Card[] hand) {
+        return (hand[0].getValue() == hand[3].getValue() || hand[1].getValue() == hand[4].getValue());
+    }
+
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
-        if (isFullHouse(hand)) return HandRankEnum.FULL_HOUSE;
+        if (isFourOfAKind(hand)) return HandRankEnum.FOUR_OF_A_KIND;
+        else if (isFullHouse(hand)) return HandRankEnum.FULL_HOUSE;
         else if (isFlush(hand)) return HandRankEnum.FLUSH;
         else if (isStraight(hand)) return HandRankEnum.STRAIGHT;
         else if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;

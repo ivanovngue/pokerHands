@@ -75,4 +75,11 @@ class CompareTest {
         Player whitePlayer = new Player("3H 3C 3D 7S 7C", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFullHouse(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithFourOfAKind_returns_rightPlayer() {
+        Player blackPlayer = new Player("2C 2H 2S 2D AH", "Black");
+        Player whitePlayer = new Player("3C 3H 3S 3D KD", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFourOfAKind(whitePlayer, blackPlayer));
+    }
 }
