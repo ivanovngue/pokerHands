@@ -49,7 +49,8 @@ public class Ranking {
 
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
-        if (isStraight(hand)) return HandRankEnum.STRAIGHT;
+        if (isFlush(hand)) return HandRankEnum.FLUSH;
+        else if (isStraight(hand)) return HandRankEnum.STRAIGHT;
         else if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;
         else if (isPair(hand)) return HandRankEnum.PAIR;
         else return HandRankEnum.HIGH_CARD;
