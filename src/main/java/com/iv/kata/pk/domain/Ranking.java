@@ -23,9 +23,14 @@ public class Ranking {
                 (card4 == card5 && card4 != card3));
     }
 
+    protected boolean isThreeOfAKind(Card[] hand) {
+        return false;
+    }
+
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
-        if (isPair(hand)) return HandRankEnum.PAIR;
+        if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;
+        else if (isPair(hand)) return HandRankEnum.PAIR;
         else return HandRankEnum.HIGH_CARD;
     }
 }

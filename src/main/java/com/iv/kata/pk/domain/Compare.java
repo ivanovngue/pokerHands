@@ -62,6 +62,10 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithThreeOfAKind(Player player1, Player player2) {
+        return null;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
@@ -90,7 +94,7 @@ public class Compare {
         }
         return cardOnPair;
     }
-    
+
     private Card[] getHandWithoutPair(Player player, Card cardPair) {
         List<Card> listCardsWithoutPair = new ArrayList<>();
         Card[] hand = player.getHand();

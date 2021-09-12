@@ -33,4 +33,18 @@ class CompareTest {
         Player whitePlayer = new Player("2H 2D 5S 9C KD", "White");
         Assertions.assertEquals(blackPlayer, compare.comparePlayerWithPair(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithDifferentThreeOfAKind_returns_rightPlayer() {
+        Player blackPlayer = new Player("2C 2H 2S 8C AH", "Black");
+        Player whitePlayer = new Player("3H 3D 3S 9C KD", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithThreeOfAKind(whitePlayer, blackPlayer));
+    }
+
+    @Test
+    void testThatPlayer_comparePlayerWithSameThreeOfAKind_returns_rightPlayer() {
+        Player blackPlayer = new Player("2C 2H 2S 8C AH", "Black");
+        Player whitePlayer = new Player("2H 2D 2S 9C KD", "White");
+        Assertions.assertNull(compare.comparePlayerWithThreeOfAKind(whitePlayer, blackPlayer));
+    }
 }

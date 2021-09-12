@@ -23,4 +23,15 @@ public class RankingTest {
         hand[4] = new Card('K', 'D');
         Assertions.assertTrue(ranking.isPair(hand));
     }
+
+    @Test
+    void testThatHand_isThreeOfAKind() {
+        Card[] hand = new Card[5];
+        hand[0] = new Card('2', 'H');
+        hand[1] = new Card('2', 'D');
+        hand[2] = new Card('2', 'S');
+        hand[3] = new Card('5', 'C');
+        hand[4] = new Card('K', 'D');
+        Assertions.assertTrue(ranking.isThreeOfAKind(hand));
+    }
 }
