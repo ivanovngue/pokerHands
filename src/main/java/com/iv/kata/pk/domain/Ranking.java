@@ -61,6 +61,10 @@ public class Ranking {
         return (hand[0].getValue() == hand[3].getValue() || hand[1].getValue() == hand[4].getValue());
     }
 
+    protected boolean isStraightFlush(Card[] hand) {
+        return false;
+    }
+
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
         if (isFourOfAKind(hand)) return HandRankEnum.FOUR_OF_A_KIND;

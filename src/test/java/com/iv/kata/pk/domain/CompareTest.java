@@ -82,4 +82,11 @@ class CompareTest {
         Player whitePlayer = new Player("3C 3H 3S 3D KD", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFourOfAKind(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithStraightFlush_returns_rightPlayer() {
+        Player blackPlayer = new Player("2H 3H 4H 5H 6H", "Black");
+        Player whitePlayer = new Player("3D 4D 5D 6D 7D", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithStraightFlush(whitePlayer, blackPlayer));
+    }
 }

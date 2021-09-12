@@ -82,6 +82,17 @@ public class RankingTest {
     }
 
     @Test
+    void testThatHand_isStraightFlush() {
+        Card[] hand = new Card[5];
+        hand[0] = new Card('5', 'H');
+        hand[1] = new Card('6', 'H');
+        hand[2] = new Card('7', 'H');
+        hand[3] = new Card('8', 'H');
+        hand[4] = new Card('9', 'H');
+        Assertions.assertTrue(ranking.isStraightFlush(hand));
+    }
+
+    @Test
     void testThatGetPlayerRanking_returnCorrectWinner() {
 
         Player playerIsPair = new Player("2H 2D 5S 9C KD", "White");
@@ -101,5 +112,8 @@ public class RankingTest {
 
         Player playerIsFourOfAKind = new Player("2H 2D 2S 2C KD", "White");
         Assertions.assertEquals(HandRankEnum.FOUR_OF_A_KIND, ranking.getPlayerRanking(playerIsFourOfAKind));
+
+        Player playerIsStraightFlush = new Player("5H 6H 7H 8H 9H", "White");
+        Assertions.assertEquals(HandRankEnum.STRAIGHT_FLUSH, ranking.getPlayerRanking(playerIsStraightFlush));
     }
 }
