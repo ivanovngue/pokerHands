@@ -48,6 +48,9 @@ public class Winner {
                     case 0:
                         addResult(result, compare.comparePlayerWithHigh(blackPlayer, whitePlayer), blackPlayerMessageDetail);
                         break;
+                    case 1:
+                        addResult(result, compare.comparePlayerWithPair(blackPlayer, whitePlayer), blackPlayerMessageDetail);
+                        break;
                     default:
                         result.add(TIE);
                         break;
