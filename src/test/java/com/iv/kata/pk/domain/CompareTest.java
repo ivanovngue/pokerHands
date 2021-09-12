@@ -19,4 +19,18 @@ class CompareTest {
         Player whitePlayer = new Player("2H 3D 5S 9C KD", "White");
         Assertions.assertEquals(blackPlayer, compare.comparePlayerWithHigh(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithDifferentPairs_returns_rightPlayer() {
+        Player blackPlayer = new Player("2C 2H 4S 8C AH", "Black");
+        Player whitePlayer = new Player("3H 3D 5S 9C KD", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithPair(whitePlayer, blackPlayer));
+    }
+
+    @Test
+    void testThatPlayer_comparePlayerWithSamePairs_returns_rightPlayer() {
+        Player blackPlayer = new Player("2C 2H 4S 8C AH", "Black");
+        Player whitePlayer = new Player("2H 2D 5S 9C KD", "White");
+        Assertions.assertEquals(blackPlayer, compare.comparePlayerWithPair(whitePlayer, blackPlayer));
+    }
 }
