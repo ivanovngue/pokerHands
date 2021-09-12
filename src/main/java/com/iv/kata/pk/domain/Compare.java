@@ -159,6 +159,25 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithStraightFlush(Player player1, Player player2) {
+        Player playerToReturn = null;
+        Card[] Hand1 = player1.getHand();
+        Card[] Hand2 = player2.getHand();
+        if (ranking.isStraightFlush(Hand1) && ranking.isStraightFlush(Hand2)) {
+            Card card1Flush = getHighCard(player1.getHand());
+            Card card2Flush = getHighCard(player2.getHand());
+            if (card1Flush != null && card2Flush != null) {
+                if (card1Flush.getRank() > card2Flush.getRank()) {
+                    playerToReturn = player1;
+                }
+                if (card1Flush.getRank() < card2Flush.getRank()) {
+                    playerToReturn = player2;
+                }
+            }
+        }
+        return playerToReturn;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
