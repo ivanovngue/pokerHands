@@ -113,6 +113,37 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithFullHouse(Player player1, Player player2) {
+        Player playerToReturn = null;
+        Card[] hand1 = player1.getHand();
+        Card[] hand2 = player2.getHand();
+
+        Card[] newHand1 = new Card[3];
+        Card[] newHand2 = new Card[3];
+        if (ranking.isThreeOfAKind(hand1) && ranking.isThreeOfAKind(hand2)) {
+            if (hand1[3].getRank() == hand1[4].getRank() && hand2[3].getRank() == hand2[4].getRank()) {
+                newHand1[0] = hand1[0];
+                newHand1[1] = hand1[1];
+                newHand1[2] = hand1[2];
+                newHand2[0] = hand2[0];
+                newHand2[1] = hand2[1];
+                newHand2[2] = hand2[2];
+
+                Card highCard1 = getHighCard(newHand1);
+                Card highCard2 = getHighCard(newHand2);
+                if (highCard1 != null && highCard2 != null) {
+                    if (highCard1.getRank() > highCard2.getRank()) {
+                        playerToReturn = player1;
+                    }
+                    if (highCard1.getRank() < highCard2.getRank()) {
+                        playerToReturn = player2;
+                    }
+                }
+            }
+        }
+        return playerToReturn;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {

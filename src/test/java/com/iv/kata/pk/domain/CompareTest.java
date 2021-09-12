@@ -75,4 +75,11 @@ class CompareTest {
         Player whitePlayer = new Player("3H 4H 8H 9H TH", "White");
         Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFlush(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithDifferentFullHouse_returns_rightPlayer() {
+        Player blackPlayer = new Player("2H 2C 2D 5S 5C", "Black");
+        Player whitePlayer = new Player("3H 3C 3D 7S 7C", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFullHouse(whitePlayer, blackPlayer));
+    }
 }
