@@ -34,4 +34,15 @@ public class RankingTest {
         hand[4] = new Card('K', 'D');
         Assertions.assertTrue(ranking.isThreeOfAKind(hand));
     }
+
+    @Test
+    void testThatHand_isStraight() {
+        Card[] hand = new Card[5];
+        hand[0] = new Card('5', 'H');
+        hand[1] = new Card('6', 'D');
+        hand[2] = new Card('7', 'S');
+        hand[3] = new Card('8', 'C');
+        hand[4] = new Card('9', 'D');
+        Assertions.assertTrue(ranking.isStraight(hand));
+    }
 }

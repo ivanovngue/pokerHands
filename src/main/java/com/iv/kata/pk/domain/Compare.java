@@ -77,6 +77,21 @@ public class Compare {
         return playerToReturn;
     }
 
+    protected Player comparePlayerWithStraight(Player player1, Player player2) {
+        Player playerToReturn = null;
+        Card card1Straight = getHighCard(player1.getHand());
+        Card card2Straight = getHighCard(player2.getHand());
+        if (card1Straight != null && card2Straight != null) {
+            if (card1Straight.getRank() > card2Straight.getRank()) {
+                playerToReturn = player1;
+            }
+            if (card1Straight.getRank() < card2Straight.getRank()) {
+                playerToReturn = player2;
+            }
+        }
+        return playerToReturn;
+    }
+
     private Card getHighCard(Card[] hand) {
         Card maxValueHand = new Card('2', ' ');
         for (int i = 1; i < hand.length; i++) {
