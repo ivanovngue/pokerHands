@@ -37,6 +37,9 @@ public class Ranking {
         return hand[4].getValue() - hand[0].getValue() == 4;
     }
 
+    protected boolean isFlush(Card[] hand) {
+        return false;
+    }
 
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
