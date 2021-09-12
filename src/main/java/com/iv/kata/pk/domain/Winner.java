@@ -60,6 +60,9 @@ public class Winner {
                     case 5:
                         addResult(result, compare.comparePlayerWithFlush(blackPlayer, whitePlayer), blackPlayerMessageDetail);
                         break;
+                    case 6:
+                        addResult(result, compare.comparePlayerWithFullHouse(blackPlayer, whitePlayer), blackPlayerMessageDetail);
+                        break;
                     default:
                         result.add(TIE);
                         break;
