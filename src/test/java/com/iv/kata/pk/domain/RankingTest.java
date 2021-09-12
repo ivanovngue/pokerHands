@@ -45,4 +45,15 @@ public class RankingTest {
         hand[4] = new Card('9', 'D');
         Assertions.assertTrue(ranking.isStraight(hand));
     }
+
+    @Test
+    void testThatHand_isFlush() {
+        Card[] hand = new Card[5];
+        hand[0] = new Card('9', 'D');
+        hand[1] = new Card('8', 'D');
+        hand[2] = new Card('2', 'D');
+        hand[3] = new Card('6', 'D');
+        hand[4] = new Card('3', 'D');
+        Assertions.assertTrue(ranking.isFlush(hand));
+    }
 }

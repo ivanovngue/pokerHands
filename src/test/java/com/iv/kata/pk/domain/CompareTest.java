@@ -61,4 +61,18 @@ class CompareTest {
         Player whitePlayer = new Player("2H 3D 4S 5C 6D", "White");
         Assertions.assertNull(compare.comparePlayerWithStraight(whitePlayer, blackPlayer));
     }
+
+    @Test
+    void testThatPlayer_comparePlayerWithDifferentFlush_returns_rightPlayer() {
+        Player blackPlayer = new Player("2H 4H 6H 7H 9H", "Black");
+        Player whitePlayer = new Player("3D 4D 8D 9D TD", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFlush(whitePlayer, blackPlayer));
+    }
+
+    @Test
+    void testThatPlayer_comparePlayerWithSameSuiteFlush_returns_rightPlayer() {
+        Player blackPlayer = new Player("2H 4H 6H 7H 9H", "Black");
+        Player whitePlayer = new Player("3H 4H 8H 9H TH", "White");
+        Assertions.assertEquals(whitePlayer, compare.comparePlayerWithFlush(whitePlayer, blackPlayer));
+    }
 }

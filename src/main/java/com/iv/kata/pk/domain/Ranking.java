@@ -37,10 +37,20 @@ public class Ranking {
         return hand[4].getValue() - hand[0].getValue() == 4;
     }
 
+    protected boolean isFlush(Card[] hand) {
+        char suit1 = hand[0].getSuit();
+        char suit2 = hand[1].getSuit();
+        char suit3 = hand[2].getSuit();
+        char suit4 = hand[3].getSuit();
+        char suit5 = hand[4].getSuit();
+
+        return (suit1 == suit2 && suit2 == suit3 && suit3 == suit4 && suit4 == suit5);
+    }
 
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
-        if (isStraight(hand)) return HandRankEnum.STRAIGHT;
+        if (isFlush(hand)) return HandRankEnum.FLUSH;
+        else if (isStraight(hand)) return HandRankEnum.STRAIGHT;
         else if (isThreeOfAKind(hand)) return HandRankEnum.THREE_OF_A_KIND;
         else if (isPair(hand)) return HandRankEnum.PAIR;
         else return HandRankEnum.HIGH_CARD;
