@@ -56,4 +56,15 @@ public class RankingTest {
         hand[4] = new Card('3', 'D');
         Assertions.assertTrue(ranking.isFlush(hand));
     }
+
+    @Test
+    void testThatHand_isFullHouse() {
+        Card[] hand = new Card[5];
+        hand[0] = new Card('9', 'H');
+        hand[1] = new Card('9', 'D');
+        hand[2] = new Card('9', 'S');
+        hand[3] = new Card('3', 'C');
+        hand[4] = new Card('3', 'D');
+        Assertions.assertTrue(ranking.isFullHouse(hand));
+    }
 }

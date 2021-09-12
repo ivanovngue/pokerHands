@@ -47,6 +47,10 @@ public class Ranking {
         return (suit1 == suit2 && suit2 == suit3 && suit3 == suit4 && suit4 == suit5);
     }
 
+    protected boolean isFullHouse(Card[] hand) {
+        return false;
+    }
+
     protected HandRankEnum getPlayerRanking(Player player) {
         Card[] hand = player.getHand();
         if (isFlush(hand)) return HandRankEnum.FLUSH;
