@@ -10,7 +10,6 @@ import org.apache.commons.lang3.ArrayUtils;
  * @author Ivan
  */
 public class Compare {
-    Ranking ranking = new Ranking();
 
     protected Player comparePlayerWithHigh(Player player1, Player player2) {
         Player playerToReturn = null;
@@ -35,6 +34,10 @@ public class Compare {
             }
         }
         return playerToReturn;
+    }
+
+    protected Player comparePlayerWithPair(Player player1, Player player2) {
+        return null;
     }
 
     private Card getHighCard(Card[] hand) {

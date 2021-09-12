@@ -1,5 +1,6 @@
 package com.iv.kata.pk.domain;
 
+import com.iv.kata.pk.domain.dto.Card;
 import com.iv.kata.pk.domain.dto.Player;
 import com.iv.kata.pk.domain.util.HandRankEnum;
 
@@ -9,8 +10,13 @@ import com.iv.kata.pk.domain.util.HandRankEnum;
  * @author Ivan
  */
 public class Ranking {
+    protected boolean isPair(Card[] hand) {
+        return false;
+    }
 
     protected HandRankEnum getPlayerRanking(Player player) {
-        return HandRankEnum.HIGH_CARD;
+        Card[] hand = player.getHand();
+        if (isPair(hand)) return HandRankEnum.PAIR;
+        else return HandRankEnum.HIGH_CARD;
     }
 }
