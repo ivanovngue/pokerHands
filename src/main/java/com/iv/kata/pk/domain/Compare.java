@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class Compare {
 
+    Ranking ranking = new Ranking();
+
     protected Player comparePlayerWithHigh(Player player1, Player player2) {
         Player playerToReturn = null;
         if (player1.getHand().length > 1 && player2.getHand().length > 1) {
@@ -93,7 +95,22 @@ public class Compare {
     }
 
     protected Player comparePlayerWithFlush(Player player1, Player player2) {
-        return null;
+        Player playerToReturn = null;
+        Card[] Hand1 = player1.getHand();
+        Card[] Hand2 = player2.getHand();
+        if (ranking.isFlush(Hand1) && ranking.isFlush(Hand2)) {
+            Card card1Flush = getHighCard(player1.getHand());
+            Card card2Flush = getHighCard(player2.getHand());
+            if (card1Flush != null && card2Flush != null) {
+                if (card1Flush.getRank() > card2Flush.getRank()) {
+                    playerToReturn = player1;
+                }
+                if (card1Flush.getRank() < card2Flush.getRank()) {
+                    playerToReturn = player2;
+                }
+            }
+        }
+        return playerToReturn;
     }
 
     private Card getHighCard(Card[] hand) {
