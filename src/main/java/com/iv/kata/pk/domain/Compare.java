@@ -4,6 +4,9 @@ import com.iv.kata.pk.domain.dto.Card;
 import com.iv.kata.pk.domain.dto.Player;
 import org.apache.commons.lang3.ArrayUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class is used to compare hands of 5 cards with same ranking
  *
@@ -37,7 +40,26 @@ public class Compare {
     }
 
     protected Player comparePlayerWithPair(Player player1, Player player2) {
-        return null;
+        Player playerToReturn = null;
+        Card card1Pair = getCardsOnPair(player1);
+        Card card2Pair = getCardsOnPair(player2);
+        if (card1Pair != null && card2Pair != null) {
+            if (card1Pair.getRank() == card2Pair.getRank()) {
+                Card[] hand1WithoutPair = getHandWithoutPair(player1, card1Pair);
+                Card[] hand2WithoutPair = getHandWithoutPair(player2, card2Pair);
+                if (getLowCard(hand1WithoutPair).getRank() > getLowCard(hand2WithoutPair).getRank()) {
+                    playerToReturn = player2;
+                }
+                if (getLowCard(hand1WithoutPair).getRank() < getLowCard(hand2WithoutPair).getRank()) {
+                    playerToReturn = player1;
+                }
+            } else if (card1Pair.getRank() > card2Pair.getRank()) {
+                playerToReturn = player1;
+            } else {
+                playerToReturn = player2;
+            }
+        }
+        return playerToReturn;
     }
 
     private Card getHighCard(Card[] hand) {
@@ -48,5 +70,47 @@ public class Compare {
             }
         }
         return maxValueHand;
+    }
+
+    private Card getCardsOnPair(Player player) {
+        Card[] hand = player.getHand();
+        Card cardOnPair = null;
+        int occurrence = 0;
+        for (int i = 0; i < hand.length; i++) {
+            for (int j = 0; j < hand.length; j++) {
+                if (hand[i].getRank() == hand[j].getRank()) {
+                    occurrence++;
+                }
+            }
+            if (occurrence == 2) {
+                cardOnPair = hand[i];
+                break;
+            }
+            occurrence = 0;
+        }
+        return cardOnPair;
+    }
+    
+    private Card[] getHandWithoutPair(Player player, Card cardPair) {
+        List<Card> listCardsWithoutPair = new ArrayList<>();
+        Card[] hand = player.getHand();
+        for (int i = 0; i < hand.length; i++) {
+            if (hand[i].getRank() != cardPair.getRank()) {
+                listCardsWithoutPair.add(hand[i]);
+            }
+        }
+        Card[] handWithoutPair = new Card[listCardsWithoutPair.size()];
+        listCardsWithoutPair.toArray(handWithoutPair);
+        return handWithoutPair;
+    }
+
+    private Card getLowCard(Card[] hand) {
+        Card minValueHand = new Card('A', ' ');
+        for (int i = 1; i < hand.length; i++) {
+            if (hand[i].getRank() < minValueHand.getRank()) {
+                minValueHand = hand[i];
+            }
+        }
+        return minValueHand;
     }
 }

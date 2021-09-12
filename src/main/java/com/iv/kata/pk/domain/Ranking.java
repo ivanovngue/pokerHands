@@ -11,7 +11,16 @@ import com.iv.kata.pk.domain.util.HandRankEnum;
  */
 public class Ranking {
     protected boolean isPair(Card[] hand) {
-        return false;
+        int card1 = hand[0].getValue();
+        int card2 = hand[1].getValue();
+        int card3 = hand[2].getValue();
+        int card4 = hand[3].getValue();
+        int card5 = hand[4].getValue();
+
+        return ((card1 == card2 && card2 != card3) ||
+                (card2 == card3 && card3 != card4 && card2 != card1) ||
+                (card3 == card4 && card4 != card5 && card3 != card2) ||
+                (card4 == card5 && card4 != card3));
     }
 
     protected HandRankEnum getPlayerRanking(Player player) {
