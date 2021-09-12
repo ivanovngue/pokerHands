@@ -54,6 +54,9 @@ public class Winner {
                     case 3:
                         addResult(result, compare.comparePlayerWithThreeOfAKind(blackPlayer, whitePlayer), blackPlayerMessageDetail);
                         break;
+                    case 4:
+                        addResult(result, compare.comparePlayerWithStraight(blackPlayer, whitePlayer), blackPlayerMessageDetail);
+                        break;
                     default:
                         result.add(TIE);
                         break;
