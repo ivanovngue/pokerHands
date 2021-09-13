@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Compare {
 
-    Ranking ranking = new Ranking();
+    private final Ranking ranking = new Ranking();
 
     protected Player comparePlayerWithHigh(Player player1, Player player2) {
         Player playerToReturn = null;
@@ -96,9 +96,9 @@ public class Compare {
 
     protected Player comparePlayerWithFlush(Player player1, Player player2) {
         Player playerToReturn = null;
-        Card[] Hand1 = player1.getHand();
-        Card[] Hand2 = player2.getHand();
-        if (ranking.isFlush(Hand1) && ranking.isFlush(Hand2)) {
+        Card[] hand1 = player1.getHand();
+        Card[] hand2 = player2.getHand();
+        if (ranking.isFlush(hand1) && ranking.isFlush(hand2)) {
             Card card1Flush = getHighCard(player1.getHand());
             Card card2Flush = getHighCard(player2.getHand());
             if (card1Flush != null && card2Flush != null) {
@@ -121,23 +121,21 @@ public class Compare {
         Card[] newHand1 = new Card[3];
         Card[] newHand2 = new Card[3];
         if (ranking.isThreeOfAKind(hand1) && ranking.isThreeOfAKind(hand2)) {
-            if (hand1[3].getRank() == hand1[4].getRank() && hand2[3].getRank() == hand2[4].getRank()) {
-                newHand1[0] = hand1[0];
-                newHand1[1] = hand1[1];
-                newHand1[2] = hand1[2];
-                newHand2[0] = hand2[0];
-                newHand2[1] = hand2[1];
-                newHand2[2] = hand2[2];
+            newHand1[0] = hand1[0];
+            newHand1[1] = hand1[1];
+            newHand1[2] = hand1[2];
+            newHand2[0] = hand2[0];
+            newHand2[1] = hand2[1];
+            newHand2[2] = hand2[2];
 
-                Card highCard1 = getHighCard(newHand1);
-                Card highCard2 = getHighCard(newHand2);
-                if (highCard1 != null && highCard2 != null) {
-                    if (highCard1.getRank() > highCard2.getRank()) {
-                        playerToReturn = player1;
-                    }
-                    if (highCard1.getRank() < highCard2.getRank()) {
-                        playerToReturn = player2;
-                    }
+            Card highCard1 = getHighCard(newHand1);
+            Card highCard2 = getHighCard(newHand2);
+            if (highCard1 != null && highCard2 != null) {
+                if (highCard1.getRank() > highCard2.getRank()) {
+                    playerToReturn = player1;
+                }
+                if (highCard1.getRank() < highCard2.getRank()) {
+                    playerToReturn = player2;
                 }
             }
         }
@@ -161,9 +159,9 @@ public class Compare {
 
     protected Player comparePlayerWithStraightFlush(Player player1, Player player2) {
         Player playerToReturn = null;
-        Card[] Hand1 = player1.getHand();
-        Card[] Hand2 = player2.getHand();
-        if (ranking.isStraightFlush(Hand1) && ranking.isStraightFlush(Hand2)) {
+        Card[] hand1 = player1.getHand();
+        Card[] hand2 = player2.getHand();
+        if (ranking.isStraightFlush(hand1) && ranking.isStraightFlush(hand2)) {
             Card card1Flush = getHighCard(player1.getHand());
             Card card2Flush = getHighCard(player2.getHand());
             if (card1Flush != null && card2Flush != null) {
@@ -192,14 +190,14 @@ public class Compare {
         Card[] hand = player.getHand();
         Card cardOnPair = null;
         int occurrence = 0;
-        for (int i = 0; i < hand.length; i++) {
-            for (int j = 0; j < hand.length; j++) {
-                if (hand[i].getRank() == hand[j].getRank()) {
+        for (Card card : hand) {
+            for (Card value : hand) {
+                if (card.getRank() == value.getRank()) {
                     occurrence++;
                 }
             }
             if (occurrence == 2) {
-                cardOnPair = hand[i];
+                cardOnPair = card;
                 break;
             }
             occurrence = 0;
@@ -210,9 +208,9 @@ public class Compare {
     private Card[] getHandWithoutPair(Player player, Card cardPair) {
         List<Card> listCardsWithoutPair = new ArrayList<>();
         Card[] hand = player.getHand();
-        for (int i = 0; i < hand.length; i++) {
-            if (hand[i].getRank() != cardPair.getRank()) {
-                listCardsWithoutPair.add(hand[i]);
+        for (Card card : hand) {
+            if (card.getRank() != cardPair.getRank()) {
+                listCardsWithoutPair.add(card);
             }
         }
         Card[] handWithoutPair = new Card[listCardsWithoutPair.size()];

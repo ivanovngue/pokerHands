@@ -21,6 +21,7 @@ public class RetrieveInputData {
         InputStream table = classloader.getResourceAsStream("hands.txt");
         List<String> rowsGameWithTwoPlayers = new ArrayList<>();
         try {
+            assert table != null;
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(table));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
