@@ -25,9 +25,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card anotherCard) {
-        if (getValue() < anotherCard.getValue()) return -1;
-        else if (getValue() > anotherCard.getValue()) return 1;
-        else return 0;
+        return Character.compare(getValue(), anotherCard.getValue());
     }
 
     private int calculationOfCardRank(char value) {
@@ -46,7 +44,7 @@ public class Card implements Comparable<Card> {
                 return 0;
             }
         } else {
-            return Integer.valueOf(String.valueOf(value));
+            return Integer.parseInt(String.valueOf(value));
         }
     }
 }
