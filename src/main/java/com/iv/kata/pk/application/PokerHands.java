@@ -8,9 +8,9 @@ import com.iv.kata.pk.domain.Winner;
  * @author Ivan
  */
 public class PokerHands {
-    private static Winner winner = new Winner();
+    private static final Winner winner = new Winner();
 
     public static void main(String[] args) {
-        winner.getWinner().stream().forEach(System.out::println);
+        winner.getWinner().forEach(System.out::println);
     }
 }

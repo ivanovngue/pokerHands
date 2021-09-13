@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
  *
  * @author Ivan
  */
-public class RankingTest {
+class RankingTest {
 
-    Ranking ranking = new Ranking();
+    private final Ranking ranking = new Ranking();
 
     @Test
     void testThatHand_isPair() {

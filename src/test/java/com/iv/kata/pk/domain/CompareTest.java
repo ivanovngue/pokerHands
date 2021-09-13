@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 class CompareTest {
 
-    Compare compare = new Compare();
+    private final Compare compare = new Compare();
 
     @Test
     void testThatPlayer_comparePlayerWithHigh_returns_rightPlayer() {

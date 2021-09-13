@@ -12,11 +12,11 @@ import java.util.List;
  */
 class RetrieveInputDataTest {
 
-    RetrieveInputData retrieveInputData = new RetrieveInputData();
+    private final RetrieveInputData retrieveInputData = new RetrieveInputData();
 
     @Test
     void testThatGetGamesWithTwoPlayersFromTxtFile_SelectCorrectRows() {
         List<String> rowsGameWithTwoPlayers = retrieveInputData.getGamesWithTwoPlayersFromTxtFile();
-        Assertions.assertTrue(rowsGameWithTwoPlayers.size() == 2);
+        Assertions.assertEquals(2, rowsGameWithTwoPlayers.size());
     }
 }

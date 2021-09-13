@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class Winner {
 
-    private RetrieveInputData retrieveInputData = new RetrieveInputData();
-
-    private Ranking ranking = new Ranking();
-    private Compare compare = new Compare();
+    private final RetrieveInputData retrieveInputData = new RetrieveInputData();
+    private final Ranking ranking = new Ranking();
+    private final Compare compare = new Compare();
 
     private static final String WINS = " wins.";
     private static final String TIE = "Tie.";
+    private static final String WITH = " - with ";
 
 
     public List<String> getWinner() {
@@ -42,7 +42,7 @@ public class Winner {
             String whitePlayerMessageDetail = ranking.getPlayerRanking(whitePlayer).getMessageDetail();
 
             if (blackPlayerRank > whitePlayerRank) {
-                result.add(blackPlayer.getName() + WINS + " - with " + blackPlayerMessageDetail);
+                result.add(blackPlayer.getName() + WINS + WITH + blackPlayerMessageDetail);
             } else if (blackPlayerRank == whitePlayerRank) {
                 switch (blackPlayerRank) {
                     case 0:
@@ -74,7 +74,7 @@ public class Winner {
                         break;
                 }
             } else {
-                result.add(whitePlayer.getName() + WINS + " - with " + whitePlayerMessageDetail);
+                result.add(whitePlayer.getName() + WINS + WITH + whitePlayerMessageDetail);
             }
         }
         return result;
@@ -82,7 +82,7 @@ public class Winner {
 
     private void addResult(List<String> result, Player player, String messageDetail) {
         if (player != null) {
-            result.add(player.getName() + WINS + " - with " + messageDetail);
+            result.add(player.getName() + WINS + WITH + messageDetail);
         } else {
             result.add(TIE);
         }

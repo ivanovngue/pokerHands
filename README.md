@@ -19,7 +19,7 @@ first 5 cards and White player is 5 last cards.
 
 ### Run class
 
-To run it, you can just execute the main : class com.iv.kata.pk.application.PokerHands.
+To run it, you can just execute the main class : com.iv.kata.pk.application.PokerHands.
 
 ### Run Jar file
 
